@@ -1,12 +1,12 @@
 run_analysis <- function(){
-  test_data <- read.table("./Data/UCI HAR Dataset/test/X_test.txt")
-  test_labels <- read.table("./Data/UCI HAR Dataset/test/y_test.txt")
-  test_subjects <- read.table("./Data/UCI HAR Dataset/test/subject_test.txt")
-  train_data <- read.table("./Data/UCI HAR Dataset/train/X_train.txt")
-  train_labels <- read.table("./Data/UCI HAR Dataset/train/y_train.txt")
-  train_subjects <- read.table("./Data/UCI HAR Dataset/train/subject_train.txt")
-  act_labels <- read.table("./Data/UCI HAR Dataset/activity_labels.txt")
-  test_names <- read.table("./Data/UCI HAR Dataset/features.txt")
+  test_data <- read.table("./UCI HAR Dataset/test/X_test.txt")
+  test_labels <- read.table("./UCI HAR Dataset/test/y_test.txt")
+  test_subjects <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+  train_data <- read.table("./UCI HAR Dataset/train/X_train.txt")
+  train_labels <- read.table("./UCI HAR Dataset/train/y_train.txt")
+  train_subjects <- read.table("./UCI HAR Dataset/train/subject_train.txt")
+  act_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
+  test_names <- read.table("./UCI HAR Dataset/features.txt")
   colnames(test_data) <- test_names[,2]
   colnames(train_data) <- test_names[,2]
   test_data <- cbind(test_subjects,test_labels,test_data)
@@ -62,5 +62,5 @@ run_analysis <- function(){
                "Body Gyro measurement Jerk Magnitude FFT - standard deviation")
   colnames(data) <- test_names
   sum_data <- data %>% group_by(Individual,Activity) %>% summarize_all(mean)
-  write.table(sum_data,".Results.txt")
+  write.table(sum_data,"Results.txt")
 }
